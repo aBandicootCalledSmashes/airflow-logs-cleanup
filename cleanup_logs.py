@@ -17,7 +17,7 @@ def delete_rotated_dag_processor_logs(log_base_path):
         if entry.startswith("dag_processor_manager.log.") and entry[len("dag_processor_manager.log.") :].isdigit():
             rotated_log_path = os.path.join(log_dir, entry)
             print(f"Deleting rotated log: {rotated_log_path}")
-            # os.unlink(rotated_log_path) # TODO: Uncomment this
+            os.unlink(rotated_log_path)
 
 def delete_old_logs_and_empty_dirs(log_base_path, age_threshold_ms):
     """
@@ -38,7 +38,7 @@ def delete_old_logs_and_empty_dirs(log_base_path, age_threshold_ms):
                 mtime_ms = os.path.getmtime(file_path) * 1000
                 if now_ms - mtime_ms > age_threshold_ms:
                     print(f"Deleting old log file: {file_path}")
-                    # os.unlink(file_path) # TODO: Uncomment this
+                    os.unlink(file_path)
             except Exception as e:
                 print(f"Error deleting file {file_path}: {e}")
 
@@ -46,7 +46,7 @@ def delete_old_logs_and_empty_dirs(log_base_path, age_threshold_ms):
         try:
             if not os.listdir(root):
                 print(f"Removing empty directory: {root}")
-                # os.rmdir(root) # TODO: Uncomment this
+                os.rmdir(root)
         except Exception as e:
             print(f"Error removing directory {root}: {e}")
 
