@@ -34,3 +34,7 @@ The `cleanup_logs_dag.py` file defines a DAG that runs the cleanup task daily at
 ## Configuration
 
 - **Retention Period:** By default, logs older than 7 days are deleted. You can change this by modifying the `MILLISECONDS_TO_KEEP` constant in the scripts.
+
+## License
+
+This template is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
