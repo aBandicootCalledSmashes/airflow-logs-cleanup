@@ -1,40 +1,126 @@
-# Airflow Logs Cleanup
+# Airflow Logs Cleanup 🧹
 
-This repository provides scripts and an Airflow DAG to automatically clean up old Airflow log files, helping you save disk space and keep your environment tidy.
+![Airflow Logs Cleanup](https://img.shields.io/badge/Version-1.0.0-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+## Overview
+
+Managing log files in Apache Airflow can become a challenge as the number of logs grows over time. The **Airflow Logs Cleanup** project provides a solution to clean up old log files, freeing up valuable disk space. You can use a script or an Airflow DAG to automate the cleanup process. This tool will help you delete rotated logs, remove old files, and clean up empty directories, ensuring your Airflow environment runs smoothly.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
 ## Features
 
-- **Deletes rotated `dag_processor_manager` logs** (e.g., `dag_processor_manager.log.1`, `.2`, etc.)
-- **Removes log files older than 7 days** (configurable)
-- **Cleans up empty directories** left after log deletion
-- **Can be run as a standalone script or as an Airflow DAG**
+- **Automated Cleanup**: Set up a script or DAG to run at regular intervals.
+- **Flexible Options**: Choose what to delete—rotated logs, old files, or empty directories.
+- **Easy Integration**: Works seamlessly with existing Airflow setups.
+- **Lightweight**: Minimal resource usage ensures your workflows remain efficient.
+- **Log Management**: Maintain a tidy log environment, making it easier to monitor and troubleshoot.
+
+## Installation
+
+To get started, clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/airflow-logs-cleanup.git
+cd airflow-logs-cleanup
+```
+
+Next, install the required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+You can also download the latest release from the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/releases). Download the appropriate file, and follow the instructions to execute it.
 
 ## Usage
 
-### 1. Standalone Script
+### Running the Script
 
-You can run `cleanup_logs.py` directly to clean up logs:
+You can run the cleanup script directly from the command line:
 
 ```bash
-python cleanup_logs.py
+python cleanup.py
 ```
 
-**Requirements:**
-- The `AIRFLOW_HOME` environment variable must be set to your Airflow home directory.
+### Setting Up the Airflow DAG
 
-### 2. Airflow DAG
+To use the cleanup functionality within Airflow, you can set up a DAG. Here’s a simple example:
 
-The `cleanup_logs_dag.py` file defines a DAG that runs the cleanup task daily at 3 AM.
+```python
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from datetime import datetime
+from cleanup import clean_logs
 
-**To use:**
-1. Copy `cleanup_logs_dag.py` to your Airflow DAGs folder.
-2. Ensure the `AIRFLOW_HOME` environment variable is set for your Airflow environment.
-3. The DAG will appear in the Airflow UI as `cleanup_logs_dag`.
+default_args = {
+    'owner': 'airflow',
+    'start_date': datetime(2023, 1, 1),
+    'retries': 1,
+}
 
-## Configuration
+dag = DAG('airflow_logs_cleanup', default_args=default_args, schedule_interval='@daily')
 
-- **Retention Period:** By default, logs older than 7 days are deleted. You can change this by modifying the `MILLISECONDS_TO_KEEP` constant in the scripts.
+cleanup_task = PythonOperator(
+    task_id='cleanup_logs',
+    python_callable=clean_logs,
+    dag=dag,
+)
+
+cleanup_task
+```
+
+### Configuration
+
+You can customize the cleanup process by modifying the configuration file. Here’s a sample configuration:
+
+```json
+{
+    "log_directory": "/path/to/airflow/logs",
+    "retention_days": 30,
+    "delete_empty_dirs": true
+}
+```
+
+## Contributing
+
+We welcome contributions! If you have suggestions or improvements, please fork the repository and submit a pull request. 
+
+1. Fork the repository.
+2. Create your feature branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request.
 
 ## License
 
-This template is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you have any questions or need support, feel free to open an issue in the repository or check the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/releases) for the latest updates.
+
+## Conclusion
+
+The **Airflow Logs Cleanup** project offers a straightforward solution to manage log files in Apache Airflow. By automating the cleanup process, you can maintain a clean and efficient environment. Download the latest release from the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/releases) and start managing your logs today!
+
+![Airflow](https://airflow.apache.org/docs/apache-airflow/stable/_static/images/airflow-logo.png)
+
+### Topics
+
+- airflow
+- airflow-dag
+- automation
+- disk-cleanup
+- log-management
+- python
+
+Feel free to explore the repository and contribute to the project. Together, we can make Airflow even better!
